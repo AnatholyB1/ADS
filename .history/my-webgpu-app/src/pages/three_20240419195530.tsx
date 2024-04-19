@@ -61,6 +61,7 @@ const Three = () => {
     const animate = () => {
         requestAnimationFrame(animate);
 
+
         // Render the scene
         renderer.render(scene, camera);
     };
@@ -68,16 +69,16 @@ const Three = () => {
     // Start the animation
     animate();
 
-    const currentRef = ref.current;
+
     // Append the renderer to the component
-    if (currentRef) {
-        currentRef.appendChild(renderer.domElement);
+    if (ref.current) {
+      ref.current.appendChild(renderer.domElement);
     }
 
     // Clean up on unmount
     return () => {
-      if (currentRef) {
-        currentRef.removeChild(renderer.domElement);
+      if (ref.current) {
+        ref.current.removeChild(renderer.domElement);
       }
       renderer.dispose();
       orbitControls.dispose();
@@ -86,7 +87,7 @@ const Three = () => {
   }, []);
 
   return <>
-    <h1 className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-4xl ">Three.js</h1>
+    <h1 className="fixed top-50">Three.js</h1>
     <div ref={ref} />
   </>;
 };

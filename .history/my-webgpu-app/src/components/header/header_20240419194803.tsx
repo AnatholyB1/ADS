@@ -7,7 +7,7 @@ import {
 
  
 const Header: React.FC = () => {
-    return  <Menubar className="bg-white/20 border-none px-2 py-6 fixed z-10 top-0 right-0 w-full">
+    return  <Menubar className="bg-transparent fixed top-0 right-0 w-full">
                 <MenubarMenu>
                     <MenubarTrigger><Link to="/three">Three.js</Link></MenubarTrigger>
                     <MenubarTrigger><Link to="/babylon">Babylon.js</Link></MenubarTrigger>

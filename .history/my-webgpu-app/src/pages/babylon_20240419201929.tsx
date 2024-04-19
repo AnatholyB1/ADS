@@ -25,12 +25,9 @@ const Babylon = () => {
       '/ct_scan__japanese_pit_viper/',
       'scene.gltf',
       scene,
-      (meshes) => {
+      () => {
         // called when the resource is loaded
         console.log('model loaded');
-        meshes.forEach((mesh) => {
-            mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
-          });
       },
       (event) => {
         // called while loading is progressing

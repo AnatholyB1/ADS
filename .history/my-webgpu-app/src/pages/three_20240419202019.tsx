@@ -37,7 +37,7 @@ const Three = () => {
         '/ct_scan__japanese_pit_viper/scene.gltf', // replace with the path to your .gltf file
         (gltf) => {
             // called when the resource is loaded
-            gltf.scene.scale.set(0.1, 0.1, 0.1); // scale down the model
+            //gltf.scene.scale.set(0.1, 0.1, 0.1); // scale down the model
             gltf.scene.position.set(0, 0, 0); // move the model to the origin
             scene.add(gltf.scene);
 
@@ -60,6 +60,9 @@ const Three = () => {
     // Animation function
     const animate = () => {
         requestAnimationFrame(animate);
+        //rotate on x
+        scene.rotation.y -= 0.001;
+        scene.rotation.x += 0.001;
 
         // Render the scene
         renderer.render(scene, camera);

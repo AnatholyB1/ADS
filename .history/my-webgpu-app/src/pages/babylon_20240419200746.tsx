@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 
 const Babylon = () => {
-  const ref = useRef<HTMLCanvasElement >(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Create an engine
@@ -17,7 +17,7 @@ const Babylon = () => {
     camera.attachControl(ref.current, true);
 
     // Create a light
-    new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
+    const light = new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
 
     // Load a GLTF resource
     BABYLON.SceneLoader.ImportMesh(
@@ -27,16 +27,13 @@ const Babylon = () => {
       scene,
       (meshes) => {
         // called when the resource is loaded
-        console.log('model loaded');
-        meshes.forEach((mesh) => {
-            mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
-          });
+        console.log('model loaded', meshes);
       },
       (event) => {
         // called while loading is progressing
         console.log(`${(event.loaded / event.total * 100)}% loaded`);
       },
-      ( message, exception) => {
+      (scene, message, exception) => {
         // called when loading has errors
         console.error('An error happened', message, exception);
       },
@@ -61,7 +58,7 @@ const Babylon = () => {
   return (
     <>
       <h1 className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-4xl">Babylon.js</h1>
-      <canvas className="w-screen h-screen" ref={ref} />
+      <div ref={ref} />
     </>
   );
 };

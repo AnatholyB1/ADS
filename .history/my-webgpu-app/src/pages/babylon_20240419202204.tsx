@@ -30,6 +30,11 @@ const Babylon = () => {
         console.log('model loaded');
         meshes.forEach((mesh) => {
             mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
+
+            scene.registerBeforeRender(() => {
+                mesh.rotation.x += 0.01;
+                mesh.rotation.y -= 0.01;
+              });
           });
       },
       (event) => {

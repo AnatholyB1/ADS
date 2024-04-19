@@ -57,16 +57,12 @@ const Three = () => {
     // Create drag controls
     const dragControls = new DragControls(draggableObjects, camera, renderer.domElement);
 
-    // Animation function
-    const animate = () => {
-        requestAnimationFrame(animate);
+
 
         // Render the scene
         renderer.render(scene, camera);
-    };
 
-    // Start the animation
-    animate();
+    
 
     const currentRef = ref.current;
     // Append the renderer to the component

@@ -60,6 +60,8 @@ const Three = () => {
     // Animation function
     const animate = () => {
         requestAnimationFrame(animate);
+        //rotate on x
+        scene.rotation.y += 0.01;
 
         // Render the scene
         renderer.render(scene, camera);
@@ -68,16 +70,16 @@ const Three = () => {
     // Start the animation
     animate();
 
-    const currentRef = ref.current;
+
     // Append the renderer to the component
-    if (currentRef) {
-        currentRef.appendChild(renderer.domElement);
+    if (ref.current) {
+      ref.current.appendChild(renderer.domElement);
     }
 
     // Clean up on unmount
     return () => {
-      if (currentRef) {
-        currentRef.removeChild(renderer.domElement);
+      if (ref.current) {
+        ref.current.removeChild(renderer.domElement);
       }
       renderer.dispose();
       orbitControls.dispose();

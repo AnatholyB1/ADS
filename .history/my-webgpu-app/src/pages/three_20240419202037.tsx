@@ -60,6 +60,9 @@ const Three = () => {
     // Animation function
     const animate = () => {
         requestAnimationFrame(animate);
+        //rotate on x
+        scene.rotation.y -= 0.001;
+        scene.rotation.x += 0.001;
 
         // Render the scene
         renderer.render(scene, camera);

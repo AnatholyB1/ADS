@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
+import { WebGPUEngine } from '@babylonjs/core/Engines/webgpuEngine';
 
-const Babylon = () => {
-  const ref = useRef<HTMLCanvasElement >(null);
+const WebGPU = () => {
+  const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     // Create an engine
-    const engine = new BABYLON.Engine(ref.current, true);
+    if(ref.current){
+        const engine = new WebGPUEngine(ref.current!);
 
     // Create a scene
     const scene = new BABYLON.Scene(engine);
@@ -27,10 +29,7 @@ const Babylon = () => {
       scene,
       (meshes) => {
         // called when the resource is loaded
-        console.log('model loaded');
-        meshes.forEach((mesh) => {
-            mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
-          });
+        console.log('model loaded', meshes);
       },
       (event) => {
         // called while loading is progressing
@@ -56,14 +55,11 @@ const Babylon = () => {
     return () => {
       engine.dispose();
     };
-  }, []);
+    }
+    
+  }, [ref]);
 
-  return (
-    <>
-      <h1 className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-4xl">Babylon.js</h1>
-      <canvas className="w-screen h-screen" ref={ref} />
-    </>
-  );
+  return <canvas ref={ref} />;
 };
 
-export default Babylon;
+export default WebGPU;

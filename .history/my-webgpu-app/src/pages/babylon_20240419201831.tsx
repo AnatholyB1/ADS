@@ -27,16 +27,13 @@ const Babylon = () => {
       scene,
       (meshes) => {
         // called when the resource is loaded
-        console.log('model loaded');
-        meshes.forEach((mesh) => {
-            mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
-          });
+        console.log('model loaded', meshes);
       },
       (event) => {
         // called while loading is progressing
         console.log(`${(event.loaded / event.total * 100)}% loaded`);
       },
-      ( message, exception) => {
+      (scene, message, exception) => {
         // called when loading has errors
         console.error('An error happened', message, exception);
       },

@@ -28,9 +28,17 @@ const Babylon = () => {
       (meshes) => {
         // called when the resource is loaded
         console.log('model loaded');
-        meshes.forEach((mesh) => {
-            mesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
-          });
+        // Get the main model mesh
+        const mainMesh = meshes[0];
+
+        // Rescale the main mesh
+        mainMesh.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1); // adjust as needed
+
+        // Add a spin animation to the main mesh
+        scene.registerBeforeRender(() => {
+        mainMesh.rotation.x += 0.01;
+        mainMesh.rotation.y += 0.01;
+        });
       },
       (event) => {
         // called while loading is progressing
