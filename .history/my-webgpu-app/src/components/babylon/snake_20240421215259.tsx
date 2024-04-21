@@ -3,9 +3,9 @@ import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 import { useLoading } from '@/hook/loading';
 
-const BabylonHome = () => {
+const BabylonSnake = () => {
   const ref = useRef<HTMLCanvasElement >(null);
-  const {showLoading, hideLoading, setNumberState} = useLoading();
+  const { showLoading, hideLoading, setNumberState } = useLoading();
 
   useEffect(() => {
     // Create an engine
@@ -24,13 +24,13 @@ const BabylonHome = () => {
     // Load a GLTF resource
     BABYLON.SceneLoader.ImportMesh(
       '',
-      '/modern_building_-_gallery_-_office/',
+      '/ct_scan__japanese_pit_viper/',
       'scene.gltf',
       scene,
       (meshes) => {
         // called when the resource is loaded
         hideLoading();
-        meshes[0].scaling = new BABYLON.Vector3(0.05,0.05,0.05); 
+        meshes[0].scaling = new BABYLON.Vector3(0.01,0.01,0.01); 
       },
       (event) => {
         // called while loading is progressing
@@ -67,4 +67,8 @@ const BabylonHome = () => {
   );
 };
 
-export default BabylonHome;
+export default BabylonSnake;
+
+
+
+ct_scan__japanese_pit_viper

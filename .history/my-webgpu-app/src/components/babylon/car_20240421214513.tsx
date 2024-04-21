@@ -3,9 +3,9 @@ import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 import { useLoading } from '@/hook/loading';
 
-const BabylonHome = () => {
+const BabylonCar = () => {
   const ref = useRef<HTMLCanvasElement >(null);
-  const {showLoading, hideLoading, setNumberState} = useLoading();
+  const { showLoading, hideLoading, setNumberState } = useLoading();
 
   useEffect(() => {
     // Create an engine
@@ -24,22 +24,20 @@ const BabylonHome = () => {
     // Load a GLTF resource
     BABYLON.SceneLoader.ImportMesh(
       '',
-      '/modern_building_-_gallery_-_office/',
+      '/mclaren_senna_free/',
       'scene.gltf',
       scene,
       (meshes) => {
         // called when the resource is loaded
-        hideLoading();
-        meshes[0].scaling = new BABYLON.Vector3(0.05,0.05,0.05); 
+        console.log('model loaded');
+        meshes[0].scaling = new BABYLON.Vector3(0.5,0.5,0.5); 
       },
       (event) => {
         // called while loading is progressing
-        showLoading();
-        setNumberState(event.loaded / event.total * 100)
+        console.log(`${(event.loaded / event.total * 100)}% loaded`);
       },
       ( message, exception) => {
         // called when loading has errors
-        hideLoading();
         console.error('An error happened', message, exception);
       },
     );
@@ -67,4 +65,4 @@ const BabylonHome = () => {
   );
 };
 
-export default BabylonHome;
+export default BabylonCar;

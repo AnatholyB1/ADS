@@ -1,10 +1,10 @@
 import React from 'react';
-const ThreeHome = React.lazy(() => import('@/components/three/home'));
-const ThreeCar = React.lazy(() => import('@/components/three/car'));
-const ThreeSnake = React.lazy(() => import('@/components/three/snake'));
+const WebgpuHome = React.lazy(() => import('@/components/webgpu/home'));
+const WebgpuCar = React.lazy(() => import('@/components/webgpu/car'));
+const WebgpuSnake = React.lazy(() => import('@/components/webgpu/snake'));
 import {Button} from '@/components/ui/button';
 
-const Three = () => {
+const WebGPU = () => {
   const [home, setHome] = React.useState(true)
     const [car, setCar] = React.useState(false)
     const [snake, setSnake] = React.useState(false)
@@ -12,7 +12,7 @@ const Three = () => {
   return (
     <>
         <div className="fixed flex flex-start items-center justify-center gap-4 flex-col p-4  top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <h1 className=" text-white text-4xl">Three.js</h1>
+            <h1 className=" text-white text-4xl">Webgpu.js</h1>
             <div className="flex flex-row items-center justify-between gap-2">
                 <Button onClick={
                     () => {
@@ -35,12 +35,12 @@ const Three = () => {
       
 
         <React.Suspense fallback={<div>Loading...</div>}>
-            {home && <ThreeHome />}
-            {car && <ThreeCar />}
-            {snake && <ThreeSnake />}
+            {home && <WebgpuHome />}
+            {car && <WebgpuCar />}
+            {snake && <WebgpuSnake />}
         </React.Suspense>
     </>
   );
 };
 
-export default Three;
+export default WebGPU;

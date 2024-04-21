@@ -1,15 +1,22 @@
 import { useEffect, useRef } from 'react';
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
+import { WebGPUEngine } from '@babylonjs/core/Engines/webgpuEngine';
 import { useLoading } from '@/hook/loading';
 
-const BabylonHome = () => {
-  const ref = useRef<HTMLCanvasElement >(null);
-  const {showLoading, hideLoading, setNumberState} = useLoading();
+const WebGPUHome = () => {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const { showLoading, hideLoading, setNumberState } = useLoading();
+
 
   useEffect(() => {
-    // Create an engine
-    const engine = new BABYLON.Engine(ref.current, true);
+
+    const init = async () => {
+
+            // Create an engine
+    console.log(ref.current);
+    const engine = new WebGPUEngine(ref.current!, { antialias: true });
+    await engine.initAsync();
 
     // Create a scene
     const scene = new BABYLON.Scene(engine);
@@ -35,7 +42,7 @@ const BabylonHome = () => {
       (event) => {
         // called while loading is progressing
         showLoading();
-        setNumberState(event.loaded / event.total * 100)
+        setNumberState(event.loaded / event.total * 100);
       },
       ( message, exception) => {
         // called when loading has errors
@@ -53,18 +60,21 @@ const BabylonHome = () => {
     window.addEventListener('resize', () => {
       engine.resize();
     });
+        // Clean up on unmount
+        return () => {
+            engine.dispose();
+          };
 
-    // Clean up on unmount
-    return () => {
-      engine.dispose();
-    };
+    }
+
+    init();
+
+
   }, []);
 
-  return (
-
-      <canvas className="w-screen h-screen" ref={ref} />
-
-  );
+  return <>
+            <canvas className="w-screen h-screen" ref={ref} />
+        </>;
 };
 
-export default BabylonHome;
+export default WebGPUHome;
