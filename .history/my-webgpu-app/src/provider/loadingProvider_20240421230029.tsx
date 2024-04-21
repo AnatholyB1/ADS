@@ -5,7 +5,8 @@ import React, { createContext, useState, ReactNode } from 'react';
 export const LoadingContext = createContext({
   isLoading: false,
   loadingState: 0,
-  setNumberState: (_state : number) => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setNumberState: (_state: number) => {},
   showLoading: () => {},
   hideLoading: () => {},
 });
