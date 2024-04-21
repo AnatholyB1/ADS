@@ -1,0 +1,10 @@
+Test ID, Timestamp, Technology, Model_Type, Loading_Time_(s), Average_FPS, Peak_Memor__Usage (MB), GPU_Usage_(%)
+001, 2024-20-04 10:01, Babylon.js, home, 1.8, 62, 280, 0
+002, 2024-20-04 10:12, Babylon.js, car, 2.0, 60, 290, 0
+003, 2024-20-04 10:13, Babylon.js, snake, 1.9, 61, 285, 0
+004, 2024-20-04 10:15, Three.js, home, 2.5, 50, 310, 0
+005, 2024-20-04 10:20, Three.js, car, 2.8, 48, 320, 0
+006, 2024-20-04 10:25, Three.js, snake, 2.6, 49, 315, 0
+007, 2024-20-04 11:26, Babylon.js with WebGPU, home, 1.5, 70, 250, 25
+008, 2024-20-04 11:27, Babylon.js with WebGPU, car, 1.6, 68, 260, 28
+009, 2024-20-04 11:27, Babylon.js with WebGPU, snake, 1.7, 69, 255, 26

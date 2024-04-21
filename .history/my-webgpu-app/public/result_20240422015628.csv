@@ -1,0 +1,10 @@
+Test ID, Timestamp, Technology, Model Type, Loading Time (s), Average FPS, Peak Memory Usage (MB), GPU Usage (%)
+001, 2023-10-04 10:00, Babylon.js, home, 1.8, 62, 280, 30
+002, 2023-10-04 10:10, Babylon.js, car, 2.0, 60, 290, 35
+003, 2023-10-04 10:20, Babylon.js, snake, 1.9, 61, 285, 32
+004, 2023-10-04 10:30, Three.js, home, 2.5, 50, 310, 45
+005, 2023-10-04 10:40, Three.js, car, 2.8, 48, 320, 50
+006, 2023-10-04 10:50, Three.js, snake, 2.6, 49, 315, 47
+007, 2023-10-04 11:00, Babylon.js with WebGPU, home, 1.5, 70, 250, 25
+008, 2023-10-04 11:10, Babylon.js with WebGPU, car, 1.6, 68, 260, 28
+009, 2023-10-04 11:20, Babylon.js with WebGPU, snake, 1.7, 69, 255, 26
