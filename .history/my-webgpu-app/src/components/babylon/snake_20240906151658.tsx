@@ -117,9 +117,6 @@ const BabylonSnake = () => {
                 document.body.removeChild(legend);
               };
 
-              // Append the close button to the legend
-legend.appendChild(closeButton);
-
               document.body.appendChild(legend);
             }
           )

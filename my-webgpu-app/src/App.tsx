@@ -8,6 +8,7 @@ import Babylon from '@/pages/babylon';
 import Webgpu from '@/pages/webgpu';
 import Results from '@/pages/results';
 import Layout from '@/Layer';
+import Test from '@/pages/test';
 
 
 
@@ -39,6 +40,10 @@ function App() {
           path: "/results",
           element: <Results />,
         },
+        {
+          path: "/test",
+          element: <Test />
+        }
       ],
     },
   ])

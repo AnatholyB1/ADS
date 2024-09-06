@@ -45,7 +45,7 @@ const BabylonSnake = () => {
           { diameter: 0.05 },
           scene
         );
-        sphere.position = new BABYLON.Vector3(0.8, 0.1, -0.05); // Adjust the position as needed
+        sphere.position = new BABYLON.Vector3(0.8, 0.1, -0.05      ); // Adjust the position as needed
 
         // Create a black material
         const blackMaterial = new BABYLON.StandardMaterial(
@@ -89,7 +89,7 @@ const BabylonSnake = () => {
               const legend = document.createElement("div");
               legend.innerText = "This is a point of interest";
               legend.style.position = "absolute";
-              legend.style.top = "55%";
+              legend.style.top = "50%";
               legend.style.left = "50%";
               legend.style.transform = "translate(-50%, -50%)";
               legend.style.backgroundColor = "white";
@@ -100,25 +100,6 @@ const BabylonSnake = () => {
               legend.style.fontFamily = "Arial";
               legend.style.fontSize = "16px";
               legend.style.fontWeight = "bold";
-              legend.style.display = "flex";
-              legend.style.alignItems = "center";
-              legend.style.justifyContent = "space-between";
-
-              // Create a close button
-              const closeButton = document.createElement("button");
-              closeButton.innerText = "✖";
-              closeButton.style.marginLeft = "10px";
-              closeButton.style.background = "none";
-              closeButton.style.border = "none";
-              closeButton.style.cursor = "pointer";
-              closeButton.style.fontSize = "16px";
-              closeButton.style.fontWeight = "bold";
-              closeButton.onclick = () => {
-                document.body.removeChild(legend);
-              };
-
-              // Append the close button to the legend
-legend.appendChild(closeButton);
 
               document.body.appendChild(legend);
             }

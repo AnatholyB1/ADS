@@ -4,7 +4,7 @@ import '@babylonjs/loaders/glTF';
 import { useLoading } from '@/hook/loading';
 
 const BabylonSnake = () => {
-  const ref = useRef<HTMLCanvasElement >(null);
+  const ref = useRef<HTMLCanvasElement>(null);
   const { showLoading, hideLoading, setNumberState } = useLoading();
 
   useEffect(() => {
@@ -30,18 +30,43 @@ const BabylonSnake = () => {
       (meshes) => {
         // called when the resource is loaded
         hideLoading();
-        meshes[0].scaling = new BABYLON.Vector3(0.01,0.01,0.01); 
+        meshes[0].scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
+
+        // Create a sphere to represent the point
+        const sphere = BABYLON.MeshBuilder.CreateSphere('point', { diameter: 0.05 }, scene);
+        sphere.position = new BABYLON.Vector3(10, 0, 0); // Adjust the position as needed
+
+        // Add an action manager to the sphere
+        sphere.actionManager = new BABYLON.ActionManager(scene);
+        sphere.actionManager.registerAction(
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, () => {
+            // Zoom the camera to the sphere
+            camera.setTarget(sphere.position);
+            camera.radius = 0.5; // Adjust the zoom level as needed
+
+            // Display a legend
+            const legend = document.createElement('div');
+            legend.innerText = 'This is a point of interest';
+            legend.style.position = 'absolute';
+            legend.style.top = '10px';
+            legend.style.left = '10px';
+            legend.style.backgroundColor = 'white';
+            legend.style.padding = '10px';
+            legend.style.border = '1px solid black';
+            document.body.appendChild(legend);
+          })
+        );
       },
       (event) => {
         // called while loading is progressing
         showLoading();
-        setNumberState(event.loaded / event.total * 100)
+        setNumberState((event.loaded / event.total) * 100);
       },
-      ( message, exception) => {
+      (message, exception) => {
         // called when loading has errors
         hideLoading();
         console.error('An error happened', message, exception);
-      },
+      }
     );
 
     // Render the scene
@@ -60,15 +85,7 @@ const BabylonSnake = () => {
     };
   }, []);
 
-  return (
-
-      <canvas id="snake" className="w-screen h-screen" ref={ref} />
-
-  );
+  return <canvas id="snake" className="w-screen h-screen" ref={ref} />;
 };
 
 export default BabylonSnake;
-
-
-
-
